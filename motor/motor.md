@@ -4,7 +4,7 @@ In this folder, control techniques for motors will be analysed.
 ### front directional motor
 this schematic allows corner control of the stimulated motor: tests have shown that the motor responds correctly to stimuli 
 
-![] motor/imm/bo.png
+![] (motor/imm/bo.png)
 
 ```c
 /*
@@ -26,8 +26,6 @@ int main(void)
     rt_pin_mode(31, PIN_MODE_OUTPUT);
 
 
-
-
          rt_pin_write(20, PIN_HIGH);
          rt_thread_mdelay(500); //5sec
          rt_pin_write(20, PIN_LOW);
@@ -37,12 +35,6 @@ int main(void)
          rt_pin_write(17, PIN_LOW);
          rt_thread_mdelay(100); //5sec
          rt_pin_write(31, PIN_HIGH);
-
-
-
-
-
-
 
     return RT_EOK;
 }
