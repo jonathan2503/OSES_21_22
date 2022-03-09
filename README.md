@@ -1,9 +1,10 @@
-OSES PROJECT
+## OSES PROJECT
+Matricola     | Name
+------------- | -------------
+301514 | Jonathan Damone
+294974  |  Lorenzo  Mastrorosa
+227170 |  Maciej    Lampart|
 
-componenti:
-301514  Jonathan Damone
-294974  Lorenzo  Mastrorosa
-227170  Maciej    Lampart
 
 One sentence  Robot Proposal :
 A robot has to navigate from point A to point B. 
