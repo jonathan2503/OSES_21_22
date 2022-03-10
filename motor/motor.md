@@ -52,7 +52,9 @@ int main(void)
         //  rt_thread_mdelay(4500); //-270 gradi
          rt_thread_mdelay(6000); //-300  gradi
          rt_pin_write(17, PIN_LOW);
-         
+        
+        
+        //led fine corsa
          rt_thread_mdelay(100); //5sec
          rt_pin_write(31, PIN_HIGH);
 
