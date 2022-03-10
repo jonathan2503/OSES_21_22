@@ -36,15 +36,27 @@ int main(void)
     rt_pin_mode(31, PIN_MODE_OUTPUT);
 
 
+
+         //controllo in angolazione con velocita angolare costante: [Orario]
          rt_pin_write(20, PIN_HIGH);
-         rt_thread_mdelay(500); //5sec
+        // rt_thread_mdelay(1500); //90 gradi
+        // rt_thread_mdelay(3000); //180 gradi
+        //  rt_thread_mdelay(4500); //270 gradi
+         rt_thread_mdelay(6000); //300  gradi
          rt_pin_write(20, PIN_LOW);
-         rt_thread_mdelay(100); //5sec
+         
+         //controllo in angolazione con velocita angolare costante: [Antiorario]
          rt_pin_write(17, PIN_HIGH);
-         rt_thread_mdelay(500); //5sec
+        // rt_thread_mdelay(1500); //-90 gradi
+        // rt_thread_mdelay(3000); //-180 gradi
+        //  rt_thread_mdelay(4500); //-270 gradi
+         rt_thread_mdelay(6000); //-300  gradi
          rt_pin_write(17, PIN_LOW);
+         
          rt_thread_mdelay(100); //5sec
          rt_pin_write(31, PIN_HIGH);
+
+         
 
     return RT_EOK;
 }
