@@ -2,7 +2,14 @@
 In this folder, control techniques for motors will be analysed.
 
 ### front directional motor
-this schematic allows corner control of the stimulated motor: tests have shown that the motor responds correctly to stimuli 
+this schematic allows corner control of the stimulated motor: tests have shown that the motor responds correctly to stimuli.
+motor specifications (values extracted from interpolation) are not real, they are only a modelization to show how rt thread works on this element.
+| Name | value |
+| ------------- | ------------- |------------- |
+| nominal voltage  | 12 |V |
+| Coil resistance  | 12  |Ohm |
+| zero load RPM  | 10 |RPM |
+| mass  | 0.4 |kg |
 
 ![ ](https://github.com/jonathan2503/OSES_21_22/blob/6ad8514bd9fe83c911792a1789303c80133c11d3/motor/imm/bo.png)
 
