@@ -11,6 +11,10 @@ motor specifications (values extracted from interpolation) are not real, they ar
 | zero load RPM  | 10 |RPM |
 | mass  | 0.4 |kg |
 
+** ATTENZIONE!  BELOW THERE IS THE INPUT AND OUTPUT COMUNICATION WHITH OTHER SOFTWARE COMPONENT **
+
+![ ](https://github.com/jonathan2503/OSES_21_22/blob/4c5b3417920bf14dc67fb0af4484a1c6c100bffe/motor/imm/Screenshot%20(8).png)
+
 this schematic allows corner control of the stimulated motor: tests have shown that the motor responds correctly to stimuli.
 the simulation resulted in a constant impulse of 1.5 sec to obtain a 90 degree angle in the anti-clockwise direction 
 
