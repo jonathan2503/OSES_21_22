@@ -21,6 +21,9 @@ the simulation resulted in a constant impulse of 1.5 sec to obtain a 90 degree a
 
 ![ ](https://github.com/jonathan2503/OSES_21_22/blob/6ad8514bd9fe83c911792a1789303c80133c11d3/motor/imm/bo.png)
 
+
+
+### BElow the code to be improved
 ```c
 /*
     STM32F401CC
