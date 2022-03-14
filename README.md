@@ -55,9 +55,11 @@ The robot can move only in 8 directions (up, down, left, right and diagonals).
  *         verso la direzione scelta
  *
  */
-```
-//EXAMPLE THAT should be call inside the main to perform this movment
+ 
+ //EXAMPLE THAT should be call inside the main to perform this movment
      ctrl_dir (0); //avanti
      ctrl_dir (1); //Destra
      ctrl_dir (2); //Sinistra
      ctrl_dir (3); //Dietro
+```
+
