@@ -12,7 +12,9 @@ The environment is simulated through a matrix where 0 is terrain that can be cro
 The matrix is stored on a file or, if reading the file ends up being too slow, on a variable in memory.
 The robot can move only in 8 directions (up, down, left, right and diagonals).
 ## Motor instruction
-'''c
+
+```c
+
 /*
  * *******************ISTRUZIONI D'USO***********************
  * 1) impostare i pin del chip:
@@ -53,4 +55,4 @@ The robot can move only in 8 directions (up, down, left, right and diagonals).
  *         verso la direzione scelta
  *
  */
- '''
+```
