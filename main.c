@@ -1,25 +1,34 @@
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
+/*
+ * Copyright (c) 2006-2022, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2022-03-17     RT-Thread    first version
+ */
+
 #include <rtthread.h>
+#include <rtdevice.h>
+#define DBG_TAG "main"
+#define DBG_LVL DBG_LOG
+#define LED0_PIN    10
+#include <rtdbg.h>
+
 #include "obstacle_process.h"
-#include "navigation_process.h"
-#include "motion_process.h"
 #include "communication_process.h"
+
 
 #define THREAD_STACK_SIZE   1024
 #define THREAD_PRIORITY     20
 #define THREAD_TIMESLICE    1
-static void thread_entry(void* parameter);
-int sample(void);
 
 
 static void thread_obstacle(void* parameter);
 static void thread_navigation(void* parameter);
 static void thread_motion(void* parameter);
 static void thread_communication(void* parameter);
-
-
+int sample(void);
 
 static rt_thread_t tid = RT_NULL;
 struct rt_semaphore sem_1;
@@ -27,17 +36,24 @@ struct rt_semaphore sem_2;
 struct rt_semaphore sem_3;
 struct rt_semaphore sem_4;
 
-int obstacles[8]={0};
-int direction[8]={0};
+int obstacles[4]={0};
+int *direction;
+
 
 int main(void)
 {
-    printf("hello rt-thread\n");
+
+    rt_pin_mode(PIN_COM_0, PIN_MODE_OUTPUT);
+    rt_pin_mode(PIN_COM_1, PIN_MODE_OUTPUT);
+    rt_pin_mode(PIN_SENS_UP, PIN_MODE_INPUT);
+    rt_pin_mode(PIN_SENS_DOWN, PIN_MODE_INPUT);
+    rt_pin_mode(PIN_SENS_LEFT, PIN_MODE_INPUT);
+    rt_pin_mode(PIN_SENS_RIGHT, PIN_MODE_INPUT);
     sample();
+
+
     return 0;
 }
-
-
 
 int sample(void)
 {
@@ -85,17 +101,13 @@ int sample(void)
   return 0;
 }
 
-
-
-
 static void thread_obstacle(void* parameter)
 {
 
     while (1){
 
    rt_sem_take(&sem_1, RT_WAITING_FOREVER); //it takes the semaphore
-   rt_kprintf("thread_obstacle starting... \n");
-  // obstacle(parameter,obstacles);
+   obstacle(obstacles);
    rt_sem_release(&sem_2);
    rt_thread_mdelay(20);
     }
@@ -109,8 +121,7 @@ static void thread_navigation(void* parameter)
 
     while (1){
     rt_sem_take(&sem_2, RT_WAITING_FOREVER);
-    rt_kprintf("thread_navigation starting...\n");
-    //navigation()
+    //navigation(obstacles,&direction)
    rt_sem_release(&sem_3);
    rt_thread_mdelay(20);
     }
@@ -120,8 +131,7 @@ static void thread_navigation(void* parameter)
 static void thread_motion(void* parameter){
     while (1){
     rt_sem_take(&sem_3, RT_WAITING_FOREVER);
-    rt_kprintf("thread_motion starting... \n");
-    //motion()
+    //motion(*direction)
    rt_sem_release(&sem_4);
    rt_thread_mdelay(20);
     }
@@ -131,23 +141,13 @@ static void thread_motion(void* parameter){
 //viene comunicata la direzione(o il punto nella mappa) in cui siamo attualmente
 static void thread_communication(void* parameter){
 
-    while (1){
+    //*direction=0;
+        while(1){
+      //*direction=(*direction +1)%4 ;
       rt_sem_take(&sem_4, RT_WAITING_FOREVER);
-      rt_kprintf("thread_communication starting...\n");
-      //communication()
+     communication(*direction);
      rt_sem_release(&sem_1);
-     rt_thread_mdelay(20);
+     rt_thread_mdelay(200);
       }
 }
-
-
-/*SEQUENZA:
- * 1) obstacle,
- * 2) navigation
- * 3) motion
- * 4) communication (location)
- *
- *
- *
- */
 
