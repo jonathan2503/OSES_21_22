@@ -92,26 +92,26 @@ void navigate (int matrix[COL_NUM][ROW_NUM])
         directions[DOWN] = (position.r + 1 < ROW_NUM) ? matrix[position.r + 1][position.c] : 1;
         directions[LEFT] = (position.c - 1 < 0) ? 1 : matrix[position.r][position.c - 1];
         choice = chooseDirection(directions, &obstacles);
-        if (obstacles == 3) matrix[position.r][position.c] = 2;
+        if (obstacles == 3) matrix[position.r][position.c] = 2; // 3 obstacles means a dead end. Set current position to 2 so that its treated as an obstacle. 2 so it can be distinguisced from true obstacle if needed.
         //down 0
         if (choice == DOWN)
-        {   // Obstacle check, out of bound check, number of previous visits check.
+        { 
             position.r++; // Position update
         }
         //right 1
         else if (choice == RIGHT)
-        {   // Obstacle check, out of bound check, number of previous visits check.
-            position.c++; // Position update
+        {  
+            position.c++; 
         }
         //left 2
         else if (choice == LEFT)
-        {   // Obstacle check, out of bound check, number of previous visits check.
-            position.c--; // Position update
+        {   
+            position.c--; 
         }
         //up 3
         else if (choice == UP)
-        {   // Obstacle check, out of bound check, number of previous visits check.
-            position.r--; // Position update
+        {
+            position.r--;
         }
         else if (choice == STUCK)
         {
