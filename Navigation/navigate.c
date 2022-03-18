@@ -48,6 +48,10 @@ int navigate (int obstacles[4], int *chosen_direction)
         matrix[position.r + 1][position.c] = (obstacles[DOWN] == 0) ? matrix[position.r + 1][position.c] : 1; // Down
         matrix[position.r][position.c - 1] = (obstacles[LEFT] == 0) ? matrix[position.r][position.c - 1] : 1; // Left
         matrix[position.r][position.c + 1] = (obstacles[RIGHT] == 0) ? matrix[position.r][position.c + 1] : 1; // Right
+        directions[UP] = matrix[position.r - 1][position.c];
+        directions[DOWN] = matrix[position.r + 1][position.c];
+        directions[LEFT] = matrix[position.r][position.c - 1];
+        directions[RIGHT] = matrix[position.r][position.c + 1];
         obstacle_num = 0;
         // Incrementing number of visits. Smaller number means more visits. 0 means no visits.
         matrix[position.r][position.c] = matrix[position.r][position.c] - 1;
