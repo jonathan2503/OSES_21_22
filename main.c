@@ -43,12 +43,20 @@ int *direction;
 int main(void)
 {
 
+    //DOVRO' INIZIALIZZARE I PIN DI OUTPUT
     rt_pin_mode(PIN_COM_0, PIN_MODE_OUTPUT);
     rt_pin_mode(PIN_COM_1, PIN_MODE_OUTPUT);
     rt_pin_mode(PIN_SENS_UP, PIN_MODE_INPUT);
     rt_pin_mode(PIN_SENS_DOWN, PIN_MODE_INPUT);
     rt_pin_mode(PIN_SENS_LEFT, PIN_MODE_INPUT);
     rt_pin_mode(PIN_SENS_RIGHT, PIN_MODE_INPUT);
+    rt_pin_mode(PIN_PROTOCOL_1, PIN_MODE_OUTPUT);
+    rt_pin_mode(PIN_PROTOCOL_2, PIN_MODE_INPUT);
+
+    rt_pin_write(PIN_COM_0, PIN_LOW);
+    rt_pin_write(PIN_COM_1, PIN_LOW);
+    rt_pin_write(PIN_PROTOCOL_1, PIN_LOW);
+
     sample();
 
 
@@ -107,11 +115,13 @@ static void thread_obstacle(void* parameter)
     while (1){
 
    rt_sem_take(&sem_1, RT_WAITING_FOREVER); //it takes the semaphore
+   while (!rt_pin_read(PIN_PROTOCOL_2)); //ASPETTO CHE PIN_PROTOCOL2 DIVENTI ALTO
+   rt_thread_delay(200);
    obstacle(obstacles);
    rt_sem_release(&sem_2);
    rt_thread_mdelay(20);
     }
-   }
+}
 
 
 
@@ -140,14 +150,17 @@ static void thread_motion(void* parameter){
 
 //viene comunicata la direzione(o il punto nella mappa) in cui siamo attualmente
 static void thread_communication(void* parameter){
-
+    int i=0;
+    int directions[10]={3,1,3,2,1,3,1,3,2,0};
     //*direction=0;
-        while(1){
-      //*direction=(*direction +1)%4 ;
+       while(1){
+      *direction=directions[i%10];
+      i++;
       rt_sem_take(&sem_4, RT_WAITING_FOREVER);
-     communication(*direction);
-     rt_sem_release(&sem_1);
-     rt_thread_mdelay(200);
+      communication(*direction);
+      rt_sem_release(&sem_1);
+      rt_thread_mdelay(200);
       }
 }
+
 
