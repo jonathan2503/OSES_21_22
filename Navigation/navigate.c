@@ -37,25 +37,24 @@ int initNavigation(int start_r, int start_c, int dest_r, int dest_c) // Call thi
 
 int navigate (int obstacles[4], int *chosen_direction)
 {
-    int directions[4];
     int choice;
     int obstacle_num;
     if (position.r == destination.r && position.c == destination.c) return 0; // Returns zero when at destination.
     else
     {
         // Updating matrix. Update value only if it's an obstacle. Ignore otherwise. 
-        matrix[position.r - 1][position.c] = (obstacles[UP] == 0) ? matrix[position.r - 1][position.c] : 1; // Up
-        matrix[position.r + 1][position.c] = (obstacles[DOWN] == 0) ? matrix[position.r + 1][position.c] : 1; // Down
-        matrix[position.r][position.c - 1] = (obstacles[LEFT] == 0) ? matrix[position.r][position.c - 1] : 1; // Left
-        matrix[position.r][position.c + 1] = (obstacles[RIGHT] == 0) ? matrix[position.r][position.c + 1] : 1; // Right
-        directions[UP] = matrix[position.r - 1][position.c];
-        directions[DOWN] = matrix[position.r + 1][position.c];
-        directions[LEFT] = matrix[position.r][position.c - 1];
-        directions[RIGHT] = matrix[position.r][position.c + 1];
+        if (position.r - 1 >= 0)        matrix[position.r - 1][position.c] = (obstacles[UP] == 0)       ? matrix[position.r - 1][position.c] : 1; // Up
+        if (position.r + 1 < ROW_NUM)   matrix[position.r + 1][position.c] = (obstacles[DOWN] == 0)     ? matrix[position.r + 1][position.c] : 1; // Down
+        if (position.c - 1 >= 0)        matrix[position.r][position.c - 1] = (obstacles[LEFT] == 0)     ? matrix[position.r][position.c - 1] : 1; // Left
+        if (position.c + 1 < COL_NUM)   matrix[position.r][position.c + 1] = (obstacles[RIGHT] == 0)    ? matrix[position.r][position.c + 1] : 1; // Right
+        obstacles[UP] =     obstacles[UP]    ? : matrix[position.r - 1][position.c];
+        obstacles[DOWN] =   obstacles[DOWN]  ? : matrix[position.r + 1][position.c];
+        obstacles[LEFT] =   obstacles[LEFT]  ? : matrix[position.r][position.c - 1];
+        obstacles[RIGHT] =  obstacles[RIGHT] ? : matrix[position.r][position.c + 1];
         obstacle_num = 0;
         // Incrementing number of visits. Smaller number means more visits. 0 means no visits.
         matrix[position.r][position.c] = matrix[position.r][position.c] - 1;
-        choice = chooseDirection(directions, &obstacle_num);
+        choice = chooseDirection(obstacles, &obstacle_num);
         if (obstacle_num == 3) matrix[position.r][position.c] = 2; // 3 obstacles means a dead end. Set current position to 2 so that its treated as an obstacle. 2 so it can be distinguisced from true obstacle if needed.
         //down 0
         if (choice == DOWN)
