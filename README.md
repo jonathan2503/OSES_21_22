@@ -20,6 +20,9 @@ In this folder, control techniques for motors will be analysed.
 # demonstration:
 https://www.youtube.com/watch?v=bR4b3S87ENY
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bR4b3S87ENY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## front directional motor
 motor specifications (values extracted from interpolation) are not real, they are only a modelization to show how rt thread works on this element.
 
