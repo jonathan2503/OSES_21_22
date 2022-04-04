@@ -15,9 +15,12 @@ The robot can move only in 8 directions (up, down, left, right and diagonals).
 
 
 
-# demonstration:
+# Demonstration:
 For the source, download **v2.zip** where the two sources of rt_thread and also the proteus project are present.
-below the demonstration of operation
+below the demonstration that it works:
+
+
+
 [![name](https://github.com/jonathan2503/OSES_21_22/blob/main/motor/imm/Screenshot%20(23).png)](https://www.youtube.com/watch?v=bR4b3S87ENY&t=13s)
 
 
