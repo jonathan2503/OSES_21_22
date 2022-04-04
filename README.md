@@ -14,11 +14,16 @@ The robot can move only in 8 directions (up, down, left, right and diagonals).
 
 
 
-# Motor 
-In this folder, control techniques for motors will be analysed.
 
 # demonstration:
+For the source, download **v2.zip** where the two sources of rt_thread and also the proteus project are present.
+below the demonstration of operation
 [![name](https://github.com/jonathan2503/OSES_21_22/blob/main/motor/imm/Screenshot%20(23).png)](https://www.youtube.com/watch?v=bR4b3S87ENY&t=13s)
+
+
+
+## Motor 
+In this folder, control techniques for motors will be analysed.
 
 ## front directional motor
 motor specifications (values extracted from interpolation) are not real, they are only a modelization to show how rt thread works on this element.
