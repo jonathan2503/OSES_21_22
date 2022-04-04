@@ -18,10 +18,7 @@ The robot can move only in 8 directions (up, down, left, right and diagonals).
 In this folder, control techniques for motors will be analysed.
 
 # demonstration:
-https://www.youtube.com/watch?v=bR4b3S87ENY
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bR4b3S87ENY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![name](https://github.com/jonathan2503/OSES_21_22/blob/main/motor/imm/Screenshot%20(23).png)](https://www.youtube.com/watch?v=bR4b3S87ENY&t=13s)
 
 ## front directional motor
 motor specifications (values extracted from interpolation) are not real, they are only a modelization to show how rt thread works on this element.
