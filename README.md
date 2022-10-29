@@ -1,9 +1,5 @@
 ### OSES PROJECT
-Matricola     | Name
-------------- | -------------
-301514 | Jonathan Damone
-294974  |  Lorenzo  Mastrorosa
-227170 |  Maciej    Lampart|
+
 
 
 One sentence  Robot Proposal :
